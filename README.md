@@ -10,11 +10,11 @@ Run `[sudo] npm install gist-backup --global`
 Run
 ---
 
-`gist-backup <github-username> <github-password> <path/to/backups>` 
+`gist-backup <github-username> <github-password> <path/to/backups> <github-api-root>`
 
-or just 
+or just
 
-`gist-backup` (will be prompted for username, password and local path to backup directory)
+`gist-backup` (will be prompted for username, password, local path to backup directory and API root)
 
 ---
 

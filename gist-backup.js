@@ -8,6 +8,7 @@ var prompt = require('sync-prompt').prompt;
 var ghUsername = process.argv[2] || prompt('Your GitHub Username? ');
 var ghPassword = process.argv[3] || prompt.hidden('Your GitHub Password? ');
 var savedir = process.argv[4] || prompt('Path to back-up dir (will create if not exists)? ') || 'gists';
+var apiRoot = process.argv[5] || prompt('GitHub API root (will default to public one)? ') || 'https://api.github.com/';
 
 mkdirp(savedir);
 
@@ -23,7 +24,7 @@ function getGists(page) {
         }
     };
 
-    rest.get('https://api.github.com/gists?per_page=100&page=' + page, options).on('complete', function (data, response) {
+    rest.get(apiRoot + 'gists?per_page=100&page=' + page, options).on('complete', function (data, response) {
         var increment = 1;
         data.forEach(function (gist) {
             var description = (!gist.description) ? 'Untitled' : gist.description
